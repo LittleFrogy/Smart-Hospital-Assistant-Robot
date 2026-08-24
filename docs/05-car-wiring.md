@@ -2,6 +2,8 @@
 
 ## 1. Car — complete pin table
 
+![Complete car wiring](diagrams/car-wiring-complete.svg)
+
 ![Car signal wiring](diagrams/car-signal-wiring.svg)
 
 

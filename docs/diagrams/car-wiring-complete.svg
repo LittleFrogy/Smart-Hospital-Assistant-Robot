@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" width="1600" height="1120" role="img"><title>Smart Hospital Assistant Robot car unit wiring diagram</title><desc>Corrected full wiring diagram for the car unit covering the IR array, ultrasonic sensor, ESP32-CAM, LCD level shifter, drive and chassis, ESP32 pin map, echo divider, L298N motor driver, lock servo, buzzer and LED, power supply, and a list of corrections from the previous version.</desc><rect width="1600" height="1120" fill="#FFFFFF"/><rect x="20" y="14" width="1560" height="46" rx="8" fill="#1F2937"/>
+<text x="800" y="32" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">SMART HOSPITAL ASSISTANT ROBOT — CAR UNIT COMPLETE WIRING DIAGRAM</text>
+<text x="800" y="50" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#C9CBD1">ESP32 DevKit V1 (30-pin) + ESP32-CAM  •  2WD rear drive, front ball caster  •  3S LiPo, dual buck rails</text>
+<rect x="20" y="76" width="450" height="182" rx="10" fill="#E8F7F1" stroke="#0F6E56" stroke-width="1.5"/>
+<rect x="20" y="76" width="450" height="26" rx="10" fill="#0F6E56"/>
+<rect x="20" y="92" width="450" height="10" fill="#0F6E56"/>
+<text x="32" y="89" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">1)  5-CHANNEL IR LINE ARRAY  (digital output)</text>
+<text x="36" y="118" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT1  →  GPIO36  (VP,  input only)</text>
+<text x="36" y="135" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT2  →  GPIO39  (VN,  input only)</text>
+<text x="36" y="152" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT3  →  GPIO34   centre sensor</text>
+<text x="36" y="169" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT4  →  GPIO35</text>
+<text x="36" y="186" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT5  →  GPIO17</text>
+<text x="36" y="203" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">VCC   →  3V3 PIN  —  NOT 5V</text>
+<text x="36" y="220" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GND   →  star ground</text>
+<text x="36" y="240" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#0F6E56">Polarity: white = LOW, BLACK = HIGH.  Marker = all five HIGH.</text>
+<rect x="20" y="270" width="450" height="148" rx="10" fill="#E8F7F1" stroke="#0F6E56" stroke-width="1.5"/>
+<rect x="20" y="270" width="450" height="26" rx="10" fill="#0F6E56"/>
+<rect x="20" y="286" width="450" height="10" fill="#0F6E56"/>
+<text x="32" y="283" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">2)  HC-SR04 ULTRASONIC  (obstacle stop)</text>
+<text x="36" y="312" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">TRIG  →  GPIO13   direct, safe</text>
+<text x="36" y="329" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">ECHO  →  1k/2k divider  →  GPIO4</text>
+<text x="36" y="346" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">VCC   →  5V rail  (must be 5V)</text>
+<text x="36" y="363" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GND   →  star ground</text>
+<text x="36" y="392" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#B03A1A">NEVER wire ECHO straight to a GPIO — 5V into a 3.6V max pin.</text>
+<rect x="20" y="430" width="450" height="160" rx="10" fill="#E8F7F1" stroke="#0F6E56" stroke-width="1.5"/>
+<rect x="20" y="430" width="450" height="26" rx="10" fill="#0F6E56"/>
+<rect x="20" y="446" width="450" height="10" fill="#0F6E56"/>
+<text x="32" y="443" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">3)  ESP32-CAM (AI-Thinker)  —  POWER WIRES ONLY</text>
+<text x="36" y="472" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">5V    →  5V rail</text>
+<text x="36" y="489" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GND   →  star ground</text>
+<text x="36" y="506" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">470µF across 5V–GND at the module  (mandatory)</text>
+<text x="36" y="523" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">GPIO16  →  NEVER CONNECT  (PSRAM chip select)</text>
+<text x="36" y="540" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#0F6E56">No UART to the ESP32. Wi-Fi to the PC.</text>
+<text x="36" y="570" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#5F5E5A">GPIO0 → GND only while flashing, then REMOVE the jumper.</text>
+<rect x="20" y="602" width="450" height="178" rx="10" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.5"/>
+<rect x="20" y="602" width="450" height="26" rx="10" fill="#993C1D"/>
+<rect x="20" y="618" width="450" height="10" fill="#993C1D"/>
+<text x="32" y="615" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">4)  16×2 LCD via BSS138 LEVEL SHIFTER (I2C)</text>
+<text x="36" y="644" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">LV1 → GPIO21        HV1 → LCD SDA</text>
+<text x="36" y="661" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">LV2 → GPIO22        HV2 → LCD SCL</text>
+<text x="36" y="678" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">LV3 → GPIO18        HV3 → lock servo signal</text>
+<text x="36" y="695" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">LV  → ESP32 3V3     HV  → 5V rail</text>
+<text x="36" y="712" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">LCD VCC → 5V rail  (not 3.3V)</text>
+<text x="36" y="729" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GND (both sides) → star ground</text>
+<text x="36" y="762" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#5F5E5A">I2C address 0x27 or 0x3F.  LV must never exceed HV.</text>
+<rect x="20" y="792" width="450" height="150" rx="10" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.5"/>
+<rect x="20" y="792" width="450" height="26" rx="10" fill="#5F5E5A"/>
+<rect x="20" y="808" width="450" height="10" fill="#5F5E5A"/>
+<text x="32" y="805" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">5)  DRIVE  &amp;  CHASSIS</text>
+<text x="36" y="834" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">2 × TT gear motor  —  REAR axle</text>
+<text x="36" y="851" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">1 × BALL caster  —  FRONT  (not swivel)</text>
+<text x="36" y="868" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">Spin centre = rear axle midpoint</text>
+<text x="36" y="885" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">100nF ceramic across each motor’s terminals</text>
+<text x="36" y="902" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">IR array at leading edge, 10mm off floor</text>
+<rect x="485" y="76" width="450" height="646" rx="10" fill="#F1F0FE" stroke="#534AB7" stroke-width="1.5"/>
+<rect x="485" y="76" width="450" height="26" rx="10" fill="#534AB7"/>
+<rect x="485" y="92" width="450" height="10" fill="#534AB7"/>
+<text x="497" y="89" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">6)  ESP32 DEVKIT V1 (30-PIN)  —  MAIN CONTROLLER</text>
+<text x="501" y="118" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#3C3489">INPUTS</text>
+<text x="501" y="140" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO36  (VP)     IR array OUT1</text>
+<text x="501" y="157" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO39  (VN)     IR array OUT2</text>
+<text x="501" y="174" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO34           IR array OUT3</text>
+<text x="501" y="191" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO35           IR array OUT4</text>
+<text x="501" y="208" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO17           IR array OUT5</text>
+<text x="501" y="225" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO4            HC-SR04 ECHO (via divider)</text>
+<text x="501" y="258" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#3C3489">OUTPUTS</text>
+<text x="501" y="280" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO13           HC-SR04 TRIG</text>
+<text x="501" y="297" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO14  PWM      L298N  ENA</text>
+<text x="501" y="314" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO27           L298N  IN1</text>
+<text x="501" y="331" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO26           L298N  IN2</text>
+<text x="501" y="348" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO25           L298N  IN3</text>
+<text x="501" y="365" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO32           L298N  IN4</text>
+<text x="501" y="382" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO23  PWM      L298N  ENB</text>
+<text x="501" y="399" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO21           I2C SDA  → BSS138 LV1</text>
+<text x="501" y="416" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO22           I2C SCL  → BSS138 LV2</text>
+<text x="501" y="433" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO18  PWM      Lock servo → BSS138 LV3</text>
+<text x="501" y="450" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO19           Buzzer  (via 1k → S8050 base)</text>
+<text x="501" y="467" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO16           Status LED (via 220Ω)</text>
+<text x="501" y="492" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#3C3489">POWER</text>
+<text x="501" y="514" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">VIN   ←  5V logic rail</text>
+<text x="501" y="531" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GND   →  star ground</text>
+<text x="501" y="548" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">3V3   →  IR array VCC</text>
+<text x="501" y="580" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#3C3489">SPARE</text>
+<text x="501" y="602" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">GPIO33  —  free, ADC1 capable</text>
+<rect x="501" y="622" width="418" height="86" rx="6" fill="#FCEBE6" stroke="#B03A1A" stroke-width="1.2"/>
+<text x="513" y="640" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#B03A1A">NEVER USE</text>
+<text x="513" y="660" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#B03A1A">GPIO 0, 2, 5, 12, 15   strapping pins</text>
+<text x="513" y="676" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#B03A1A">GPIO 1, 3              TX0 / RX0 USB serial</text>
+<text x="513" y="692" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#B03A1A">GPIO 6–11              SPI flash die</text>
+<rect x="485" y="734" width="450" height="208" rx="10" fill="#FDF4E6" stroke="#854F0B" stroke-width="1.5"/>
+<rect x="485" y="734" width="450" height="26" rx="10" fill="#854F0B"/>
+<rect x="485" y="750" width="450" height="10" fill="#854F0B"/>
+<text x="497" y="747" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">7)  ECHO DIVIDER  —  MANDATORY</text>
+<rect x="505" y="790" width="86" height="26" rx="4" fill="#E8F7F1" stroke="#0F6E56" stroke-width="1.2"/>
+<text x="548.0" y="803.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#085041">ECHO 5V</text>
+<line x1="591" y1="803" x2="626" y2="803" stroke="#73726C" stroke-width="1.4"/>
+<rect x="626" y="791" width="48" height="24" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="650.0" y="803.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">1kΩ</text>
+<line x1="674" y1="803" x2="760" y2="803" stroke="#73726C" stroke-width="1.4"/>
+<circle cx="716" cy="803" r="3.5" fill="#73726C"/>
+<rect x="760" y="790" width="86" height="26" rx="4" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.2"/>
+<text x="803.0" y="803.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#712B13">GPIO4</text>
+<line x1="716" y1="803" x2="716" y2="826" stroke="#73726C" stroke-width="1.4"/>
+<rect x="692" y="826" width="48" height="24" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="716.0" y="838.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">2kΩ</text>
+<line x1="716" y1="850" x2="716" y2="864" stroke="#73726C" stroke-width="1.4"/>
+<line x1="702" y1="864" x2="730" y2="864" stroke="#73726C" stroke-width="1.4"/>
+<line x1="707" y1="869" x2="725" y2="869" stroke="#73726C" stroke-width="1.4"/>
+<line x1="712" y1="874" x2="720" y2="874" stroke="#73726C" stroke-width="1.4"/>
+<text x="866" y="796" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#0F6E56">= 3.33V</text>
+<text x="866" y="812" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#5F5E5A">measure</text>
+<text x="505" y="916" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#B03A1A">Measure the midpoint with a meter BEFORE it touches GPIO4.</text>
+<rect x="950" y="76" width="630" height="206" rx="10" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.5"/>
+<rect x="950" y="76" width="630" height="26" rx="10" fill="#993C1D"/>
+<rect x="950" y="92" width="630" height="10" fill="#993C1D"/>
+<text x="962" y="89" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">8)  L298N MOTOR DRIVER  (2WD)</text>
+<text x="966" y="118" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">ENA  →  GPIO14  (PWM)</text>
+<text x="966" y="135" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">IN1  →  GPIO27</text>
+<text x="966" y="152" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">IN2  →  GPIO26</text>
+<text x="966" y="169" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">IN3  →  GPIO25</text>
+<text x="966" y="186" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">IN4  →  GPIO32</text>
+<text x="966" y="203" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">ENB  →  GPIO23  (PWM)</text>
+<text x="1250" y="118" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT1 / OUT2  →  LEFT motor</text>
+<text x="1250" y="135" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">OUT3 / OUT4  →  RIGHT motor</text>
+<text x="1250" y="152" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A"></text>
+<text x="1250" y="169" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">Jumpers: REMOVE ENA, ENB, 5V-EN</text>
+<rect x="966" y="228" width="598" height="42" rx="6" fill="#FCEBE6" stroke="#B03A1A" stroke-width="1.2"/>
+<text x="978" y="242" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#B03A1A">+12V terminal  ←  7.5V from BUCK 1   —   NEVER the 11.1V battery</text>
+<text x="978" y="259" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#5F5E5A">+5V terminal  ←  5V logic rail (it is an INPUT once 5V-EN is removed)</text>
+<rect x="950" y="294" width="630" height="146" rx="10" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.5"/>
+<rect x="950" y="294" width="630" height="26" rx="10" fill="#993C1D"/>
+<rect x="950" y="310" width="630" height="10" fill="#993C1D"/>
+<text x="962" y="307" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">9)  SG90 LOCK SERVO  (medicine compartment)</text>
+<text x="966" y="336" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">orange (signal)  →  BSS138 HV3   ← driven from GPIO18</text>
+<text x="966" y="353" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">red   →  5V rail          brown  →  star ground</text>
+<text x="966" y="370" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#2C2C2A">470µF across red / brown, close to the connector</text>
+<text x="966" y="414" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#B03A1A">NEVER actuate the servo while the motors run — it browns out the ESP32-CAM.</text>
+<rect x="950" y="452" width="630" height="200" rx="10" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.5"/>
+<rect x="950" y="452" width="630" height="26" rx="10" fill="#993C1D"/>
+<rect x="950" y="468" width="630" height="10" fill="#993C1D"/>
+<text x="962" y="465" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">10)  BUZZER DRIVE  &amp;  STATUS LED</text>
+<rect x="1150" y="498" width="80" height="24" rx="4" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.2"/>
+<text x="1190.0" y="510.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#712B13">BUZZER</text>
+<line x1="1190" y1="522" x2="1190" y2="540" stroke="#73726C" stroke-width="1.4"/>
+<rect x="985" y="540" width="74" height="24" rx="4" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.2"/>
+<text x="1022.0" y="552.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#712B13">GPIO19</text>
+<line x1="1059" y1="552" x2="1085" y2="552" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1085" y="540" width="44" height="24" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="1107.0" y="552.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">1kΩ</text>
+<line x1="1129" y1="552" x2="1150" y2="552" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1150" y="540" width="80" height="24" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="1190.0" y="552.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">S8050</text>
+<line x1="1190" y1="564" x2="1190" y2="580" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1176" y1="580" x2="1204" y2="580" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1181" y1="585" x2="1199" y2="585" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1186" y1="590" x2="1194" y2="590" stroke="#73726C" stroke-width="1.4"/>
+<text x="1252" y="502" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#5F5E5A">buzzer + → 5V rail</text>
+<text x="1252" y="518" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#5F5E5A">1N4148 across buzzer</text>
+<text x="1252" y="534" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#5F5E5A">banded end → buzzer −</text>
+<rect x="985" y="608" width="74" height="24" rx="4" fill="#FDF0EB" stroke="#993C1D" stroke-width="1.2"/>
+<text x="1022.0" y="620.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#712B13">GPIO16</text>
+<line x1="1059" y1="620" x2="1085" y2="620" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1085" y="608" width="50" height="24" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="1110.0" y="620.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">220Ω</text>
+<line x1="1135" y1="620" x2="1160" y2="620" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1160" y="608" width="66" height="24" rx="4" fill="#E8F7F1" stroke="#0F6E56" stroke-width="1.2"/>
+<text x="1193.0" y="620.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#085041">LED</text>
+<line x1="1226" y1="620" x2="1248" y2="620" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1234" y1="620" x2="1262" y2="620" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1239" y1="625" x2="1257" y2="625" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1244" y1="630" x2="1252" y2="630" stroke="#73726C" stroke-width="1.4"/>
+<text x="1300" y="620" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#5F5E5A">5.9mA — direct GPIO drive is safe</text>
+<rect x="950" y="664" width="630" height="278" rx="10" fill="#FDF4E6" stroke="#854F0B" stroke-width="1.5"/>
+<rect x="950" y="664" width="630" height="26" rx="10" fill="#854F0B"/>
+<rect x="950" y="680" width="630" height="10" fill="#854F0B"/>
+<text x="962" y="677" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">11)  POWER SUPPLY  (CAR)</text>
+<rect x="970" y="708" width="96" height="34" rx="4" fill="#FDF4E6" stroke="#854F0B" stroke-width="1.2"/>
+<text x="1018.0" y="725.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#633806">3S LiPo 11.1V</text>
+<line x1="1066" y1="725" x2="1092" y2="725" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1092" y="710" width="66" height="30" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="1125.0" y="725.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">5A fuse</text>
+<line x1="1158" y1="725" x2="1184" y2="725" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1184" y="710" width="74" height="30" rx="4" fill="#F5F3EE" stroke="#5F5E5A" stroke-width="1.2"/>
+<text x="1221.0" y="725.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#444441">Switch</text>
+<line x1="1258" y1="725" x2="1280" y2="725" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1280" y1="708" x2="1280" y2="768" stroke="#73726C" stroke-width="1.4"/>
+<line x1="1280" y1="708" x2="1306" y2="708" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1306" y="694" width="124" height="28" rx="4" fill="#F1F0FE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="1368.0" y="708.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#3C3489">BUCK 1 → 7.5V</text>
+<line x1="1280" y1="768" x2="1306" y2="768" stroke="#73726C" stroke-width="1.4"/>
+<rect x="1306" y="754" width="124" height="28" rx="4" fill="#F1F0FE" stroke="#534AB7" stroke-width="1.2"/>
+<text x="1368.0" y="768.0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#3C3489">BUCK 2 → 5.00V</text>
+<text x="1442" y="708" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#3C3489">→ L298N +12V</text>
+<text x="1442" y="768" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#3C3489">→ 5V logic rail</text>
+<text x="970" y="804" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#2C2C2A">BUCK 1 (7.5V):  L298N +12V,  1000µF across +12V/GND</text>
+<text x="970" y="820" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#2C2C2A">                      motors then see 5.0–5.7V</text>
+<text x="970" y="836" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#2C2C2A">BUCK 2 (5.00V): ESP32 VIN · CAM 5V · LCD · HC-SR04</text>
+<text x="970" y="852" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#2C2C2A">                      L298N +5V · BSS138 HV · buzzer · servo</text>
+<text x="970" y="868" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="#2C2C2A">LiPo alarm on the balance connector — leave it plugged in</text>
+<rect x="970" y="900" width="590" height="34" rx="6" fill="#FFFFFF" stroke="#0F6E56" stroke-width="1.2"/>
+<text x="982" y="917" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#0F6E56">Set BOTH bucks with NO LOAD connected.  All GNDs bond to ONE star point.</text>
+<rect x="20" y="954" width="1560" height="148" rx="10" fill="#FCEBE6" stroke="#B03A1A" stroke-width="1.5"/>
+<rect x="20" y="954" width="1560" height="26" rx="10" fill="#B03A1A"/>
+<rect x="20" y="970" width="1560" height="10" fill="#B03A1A"/>
+<text x="32" y="967" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">12)  CORRECTED FROM THE PREVIOUS DIAGRAM  —  verify each before powering on</text>
+<text x="40" y="996" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">✕  "Motors powered from battery via L298N 12V"  →  motors run off BUCK 1 at 7.5V. 11.1V destroys 3–6V motors.</text>
+<text x="40" y="1013" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">✕  Pan / tilt servos on GPIO13 and GPIO4  →  removed. Those pins are HC-SR04 TRIG and ECHO. This project has no pan/tilt.</text>
+<text x="40" y="1030" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">✕  "ESP32 ↔ ESP32-CAM via UART TX2/RX2"  →  removed. The CAM has 5V and GND only and talks to the PC over Wi-Fi.</text>
+<text x="40" y="1047" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">✕  GPIO16 / GPIO17 labelled RX2 / TX2  →  GPIO16 is the status LED (output), GPIO17 is IR array OUT5 (input).</text>
+<text x="40" y="1064" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#B03A1A">✕  GPIO12 shown in use  →  removed. It is a strapping pin; this design uses none.</text>
+<text x="40" y="1081" text-anchor="start" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#0F6E56">+  Added: LiPo low-voltage alarm · 1000µF on the motor rail · 100nF per motor · ball caster · BSS138 path for the servo signal · GPIO33 spare.</text></svg>

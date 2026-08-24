@@ -6,6 +6,10 @@ A line-following **car** collects medicine from a fixed **glove-box dispenser**,
 
 ![Delivery cycle](docs/diagrams/delivery-cycle.svg)
 
+### Car unit — complete wiring
+
+![Complete car wiring](docs/diagrams/car-wiring-complete.svg)
+
 ---
 
 ## Documentation
