@@ -1,0 +1,15 @@
+build/
+*.bin
+*.elf
+*.map
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.env
+.pio/
+.vscode/
+*.hex
+.DS_Store
+Thumbs.db
+desktop.ini

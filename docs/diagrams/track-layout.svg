@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" width="680" height="270" role="img">
+<title>Track layout and QR facing</title>
+<desc>A straight guide line with five perpendicular black markers: station, bed one, bed two, bed three, and a turn zone at the far end. The station QR faces right toward the beds. All bed QRs and the turn zone QR face left toward the station.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="270" fill="#FFFFFF"/>
+<rect x="52" y="90" width="96" height="36" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="100.0" y="108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#534AB7">Station</text>
+<rect x="172" y="90" width="96" height="36" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="220.0" y="108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">Bed 1</text>
+<rect x="292" y="90" width="96" height="36" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="340.0" y="108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">Bed 2</text>
+<rect x="412" y="90" width="96" height="36" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="460.0" y="108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">Bed 3</text>
+<rect x="532" y="90" width="96" height="36" rx="6" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="580.0" y="108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#854F0B">Turn zone</text>
+<line x1="50" y1="154" x2="625" y2="154" stroke="#73726C" stroke-width="5"/>
+<rect x="96" y="136" width="8" height="36" fill="#73726C"/>
+<rect x="216" y="136" width="8" height="36" fill="#73726C"/>
+<rect x="336" y="136" width="8" height="36" fill="#73726C"/>
+<rect x="456" y="136" width="8" height="36" fill="#73726C"/>
+<rect x="576" y="136" width="8" height="36" fill="#73726C"/>
+<line x1="75" y1="200" x2="125" y2="200" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="245" y1="200" x2="195" y2="200" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="365" y1="200" x2="315" y2="200" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="485" y1="200" x2="435" y2="200" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="605" y1="200" x2="555" y2="200" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="340" y="240" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="400" fill="#2C2C2A">Arrows show which way each QR code faces</text>
+</svg>

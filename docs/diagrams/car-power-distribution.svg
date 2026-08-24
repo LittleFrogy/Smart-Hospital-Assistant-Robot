@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 514" width="680" height="514" role="img">
+<title>Car power distribution</title>
+<desc>A 3S LiPo at 11.1V through a 5A fuse and switch splits to two LM2596 buck converters, one at 7.5V for the L298N motor rail and one at 5.0V for the logic rail. All grounds bond to one star point.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="514" fill="#FFFFFF"/>
+<rect x="50" y="40" width="170" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="135.0" y="64" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#633806">3S LiPo 11.1V</text>
+<rect x="260" y="40" width="130" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="325.0" y="64" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#633806">5A fuse</text>
+<rect x="430" y="40" width="150" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="505.0" y="64" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#633806">Main switch</text>
+<line x1="220" y1="64" x2="258" y2="64" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="390" y1="64" x2="428" y2="64" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="60" y="130" width="250" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="185.0" y="150" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#3C3489">LM2596 buck 1</text>
+<text x="185.0" y="168" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#534AB7">set to 7.5V, no load</text>
+<rect x="370" y="130" width="250" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="495.0" y="150" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#3C3489">LM2596 buck 2</text>
+<text x="495.0" y="168" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#534AB7">set to 5.00V, no load</text>
+<path d="M505 88 L505 110 L185 110 L185 128" fill="none" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M505 88 L505 110 L495 110 L495 128" fill="none" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="185" y1="186" x2="185" y2="224" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="495" y1="186" x2="495" y2="224" stroke="#73726C" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="60" y="226" width="250" height="110" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="185.0" y="248" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#085041">Motor rail 7.5V</text>
+<text x="80" y="272" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">L298N +12V terminal</text>
+<text x="80" y="289" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">1000uF across +12V/GND</text>
+<text x="80" y="306" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">motors see 5.0-5.7V</text>
+<rect x="370" y="226" width="250" height="180" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="495.0" y="248" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#085041">5V logic rail</text>
+<text x="390" y="272" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">ESP32 VIN</text>
+<text x="390" y="289" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">ESP32-CAM 5V + 470uF</text>
+<text x="390" y="306" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">LCD backpack VCC</text>
+<text x="390" y="323" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">HC-SR04 VCC</text>
+<text x="390" y="340" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">L298N +5V terminal</text>
+<text x="390" y="357" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">BSS138 HV pin</text>
+<text x="390" y="374" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#0F6E56">buzzer +, servo red</text>
+<line x1="185" y1="336" x2="185" y2="438" stroke="#73726C" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="495" y1="406" x2="495" y2="438" stroke="#73726C" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<rect x="50" y="440" width="580" height="34" rx="4" fill="none" stroke="#73726C" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="340" y="457" text-anchor="middle" dominant-baseline="central" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="400" fill="#2C2C2A">Common ground - every GND to one star point</text>
+</svg>
