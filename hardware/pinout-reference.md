@@ -55,6 +55,7 @@ Runtime: `5V` and `GND` only. Everything else unconnected.
 | Pin | Status |
 |---|---|
 | `5V`, `GND` | Connect to the 5V rail and star ground |
+| `GPIO4` | On-board white flash LED. Driven by the sketch, **no wiring** |
 | `GPIO16` | **Never connect** — PSRAM chip select |
 | `GPIO0` | Ground only while flashing, then remove |
 | `U0T`, `U0R` | Flashing only, to the CP2102 adapter |

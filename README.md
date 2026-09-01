@@ -27,6 +27,7 @@ A line-following **car** collects medicine from a fixed **glove-box dispenser**,
 | [09 — Assembly and calibration](docs/09-assembly-and-calibration.md) | Bring-up order and every calibration procedure |
 | [10 — Troubleshooting](docs/10-troubleshooting.md) | 22 symptoms mapped to causes and fixes, plus all warnings |
 | [Pinout reference](hardware/pinout-reference.md) | One-page GPIO map for both boards |
+| [ESP32-CAM setup guide](firmware/esp32-cam/README.md) | Flashing, network, and the five camera bring-up tests |
 
 ---
 
