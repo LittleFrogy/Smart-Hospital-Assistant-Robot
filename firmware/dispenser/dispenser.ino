@@ -31,11 +31,12 @@
 const char* WIFI_SSID = "";      // TODO: set your network name
 const char* WIFI_PASS = "";      // TODO: set your password
 
-// Static IP. MUST differ from the car (192.168.0.51) and the cam.
-IPAddress DISP_IP (192, 168, 0, 52);
-IPAddress GATEWAY (192, 168, 0, 1);
-IPAddress SUBNET  (255, 255, 255, 0);
-IPAddress DNS1    (192, 168, 0, 1);
+// Laptop's Windows Mobile Hotspot: always 192.168.137.x, laptop at .1
+// MUST differ from the car (.51) and the cam (.53).
+IPAddress DISP_IP (192, 168, 137, 52);
+IPAddress GATEWAY (192, 168, 137,  1);
+IPAddress SUBNET  (255, 255, 255,  0);
+IPAddress DNS1    (192, 168, 137,  1);
 
 /* ---------- 2. PIN MAP ------------------------------------------------------ */
 const int SERVO_PIN = 18;   // gate servo signal

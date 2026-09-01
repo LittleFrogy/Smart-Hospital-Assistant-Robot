@@ -47,10 +47,11 @@
 const char* WIFI_SSID = "";      // TODO: set your network name
 const char* WIFI_PASS = "";      // TODO: set your password
 
-IPAddress CAR_IP  (192, 168, 0, 51);   // dispenser/cam must use different last numbers
-IPAddress GATEWAY (192, 168, 0, 1);
-IPAddress SUBNET  (255, 255, 255, 0);
-IPAddress DNS1    (192, 168, 0, 1);
+// Laptop's Windows Mobile Hotspot: always 192.168.137.x, laptop at .1
+IPAddress CAR_IP  (192, 168, 137, 51);   // dispenser .52, cam .53
+IPAddress GATEWAY (192, 168, 137,  1);
+IPAddress SUBNET  (255, 255, 255,  0);
+IPAddress DNS1    (192, 168, 137,  1);
 
 const int NUM_BEDS = 1;   // single bed for now
 

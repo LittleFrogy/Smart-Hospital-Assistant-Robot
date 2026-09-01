@@ -44,9 +44,10 @@ except Exception:
 # ---------------------------------------------------------------------------
 # 1. CONFIG  --  set these to match your boards
 # ---------------------------------------------------------------------------
-CAR_IP  = "192.168.0.51"
-DISP_IP = "192.168.0.52"
-CAM_IP  = "192.168.0.53"
+# Laptop's Windows Mobile Hotspot: always 192.168.137.x, laptop itself at .1
+CAR_IP  = "192.168.137.51"
+DISP_IP = "192.168.137.52"
+CAM_IP  = "192.168.137.53"
 
 TARGET_STATION   = "STATION"
 TARGET_TURNAROUND = "TURNAROUND"
