@@ -15,23 +15,59 @@ You need Python on the PC for QR decoding anyway. Use it to host one page contro
 
 ### 1.3 Car endpoints
 
-| Endpoint | Method | Action |
+Four of these are the dispatch protocol: the car stops at a marker, enters `SCANNING`, and waits. The PC decodes the QR and calls exactly one of them to say what the marker was.
+
+| Endpoint | Meaning of the scanned marker | Action |
 |---|---|---|
-| `/go?bed=N` | POST | Set target, begin outbound run |
-| `/lock` | POST | Close lock servo |
-| `/unlock` | POST | Open lock, start 30s auto-lock timer |
-| `/resume` | POST | Wrong bed — continue to the next marker |
-| `/status` | GET | State, last scanned ID, distance, sensors |
-| `/abort` | POST | Stop motors immediately, return to station |
+| `/deliver` | The target bed | Unlock, start the 30s auto-lock timer |
+| `/resume` | The wrong bed | Keep locked, drive to the next marker |
+| `/spin` | The turn zone | 180° turnaround, set `returning` |
+| `/home` | The station, on the return leg | Park, back to `STANDBY` |
+
+The rest:
+
+| Endpoint | Action |
+|---|---|
+| `/go?bed=N` | Set target, begin the outbound run. Only valid from `STANDBY` |
+| `/status` | JSON: state, target bed, `returning`, distance, last event |
+| `/abort` | Stop now, lock, head home. Works from any state |
+| `/lock` | Manual lock. Only valid at `STANDBY` |
+| `/` | Plain-text endpoint list |
 
 `/resume` is what makes QR-only navigation work: the PC decodes, sees the wrong bed, and tells the car to keep going. Without it the car sits at the first marker forever.
 
 Add `/abort` even if the demo never uses it. When something goes wrong in testing you want a stop button that isn't chasing the car across the floor.
 
+There is no `/unlock`. Unlocking is not a thing the operator asks for — it is a consequence of a verified QR, and `/deliver` is how that verification is communicated. Keeping it that way means there is no path to an unlocked compartment that did not go through identity verification first.
+
 ### 1.4 ESP32-CAM
 
-- `http://<cam-ip>/capture` — single JPEG, what Python pulls
-- `http://<cam-ip>:81/stream` — MJPEG live view, embed in the Flask page
+| Endpoint | Port | Returns |
+|---|---|---|
+| `/` | 80 | Live view page, phone-friendly |
+| `/capture` | 80 | One JPEG — what the decoder pulls. `?flash=1` pulses the LED |
+| `/status` | 80 | JSON: frame size, encoder path, PSRAM, RSSI, grab failures |
+| `/flash?on=1` | 80 | On-board white LED, `?on=0` off |
+| `/stream` | 81 | MJPEG live view, embedded in the Flask page |
+
+Full setup and bring-up: [`firmware/esp32-cam/README.md`](../firmware/esp32-cam/README.md).
+
+**Not every ESP32-CAM has an OV2640.** Boards ship with sensors that have no hardware JPEG encoder, and the driver rejects `PIXFORMAT_JPEG` outright with `0x106`. The sketch detects this, falls back to RGB565 at 320×240 and compresses each frame on the CPU, and reports which path it took in `/status` as `jpeghw`. Everything downstream is unchanged — it is still a JPEG on the wire — but the resolution drop changes the QR sizing in [07 §1.2](07-track-and-navigation.md).
+
+### 1.5 PC app endpoints
+
+The Flask app serves the control page and is the only thing that talks to all three boards.
+
+| Endpoint | Method | Action |
+|---|---|---|
+| `/` | GET | The control page |
+| `/api/state` | GET | Mission state for the page to poll |
+| `/api/start` | POST | `{bed}` — trigger the dispenser, then send the car |
+| `/api/scan` | POST | `{attempts, bed}` — decode one frame now and report what it means |
+| `/api/manual` | POST | `{action}` — nurse override: confirm, wrong, spin, home |
+| `/api/abort` | POST | Relay `/abort` to the car |
+
+`/api/scan` deliberately **does not command the car.** It decodes and classifies, nothing more. That is what makes it usable with only the camera powered up — you can prove the whole optical path, lens focus through to payload matching, before the car exists. Use it for the measurements in [07 §1.3](07-track-and-navigation.md).
 
 ---
 
@@ -58,7 +94,9 @@ Three attempts with a 1-second gap — a single frame can miss due to focus or g
 
 ### 2.2 Fallback — nurse manual verify
 
-When `read_marker` returns `None`, the Flask page switches to manual mode: live MJPEG stream, the expected bed number, and two buttons — **"Confirm and unlock"** and **"Wrong bed — continue."**
+When `read_marker` returns `None`, the Flask page switches to manual mode and reveals the override buttons — **"Confirm and deliver"**, **"Wrong bed — continue"**, plus turn-zone and station overrides for when the car is lost.
+
+The live MJPEG view is on the page the whole time, not only in manual mode. The nurse should be able to see what the camera sees before anything has gone wrong, and it makes aiming the camera during setup far easier.
 
 This is not a workaround. Real clinical systems have manual overrides, and having one is a design strength to point at during your presentation.
 

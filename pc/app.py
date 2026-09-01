@@ -120,6 +120,23 @@ def dispatch(marker, target_bed, returning):
     # unrecognised payload
     return None
 
+def classify(marker, target_bed):
+    """Same matching rules as dispatch(), but it only reports what the marker
+    means -- it never commands the car. That is what makes the scan test on
+    /api/scan usable with nothing but the camera powered up."""
+    m = (marker or "").upper()
+    if not m:
+        return "nothing decoded"
+    if m == TARGET_STATION:
+        return f"{m} - the docking marker"
+    if m == TARGET_TURNAROUND:
+        return f"{m} - the car would spin here"
+    if m == f"{BED_PREFIX}{target_bed}":
+        return f"{m} - MATCHES target bed {target_bed}. Would deliver."
+    if m.startswith(BED_PREFIX):
+        return f"{m} - a bed, but not target {target_bed}. Would drive on."
+    return f"'{m}' - not a marker this system recognises"
+
 # ---------------------------------------------------------------------------
 # 4. BACKGROUND MISSION LOOP
 #    Runs in its own thread. Polls the car; when it is SCANNING, decodes and
@@ -226,6 +243,31 @@ def api_manual():
         mission["message"] = msg
     return jsonify(ok=True)
 
+@app.route("/api/scan", methods=["POST"])
+def api_scan():
+    """Decode one frame from the camera, right now, on demand.
+
+    This deliberately does NOT talk to the car, so it works with only the
+    camera powered up. Use it to prove the whole optical path -- lens focus,
+    QR size, print quality, lighting -- long before the car exists."""
+    if not QR_AVAILABLE:
+        return jsonify(ok=False, marker="", note="pyzbar not installed", ms=0)
+
+    body = request.json or {}
+    attempts = max(1, min(int(body.get("attempts", 1)), 5))
+    bed = int(body.get("bed", 0)) or 1
+
+    t0 = time.time()
+    marker = read_marker(attempts)
+    ms = int((time.time() - t0) * 1000)
+    note = classify(marker, bed)
+
+    with lock:
+        mission["last_marker"] = marker or ""
+        mission["message"] = f"Scan: {note}"
+
+    return jsonify(ok=bool(marker), marker=marker or "", note=note, ms=ms)
+
 @app.route("/api/abort", methods=["POST"])
 def api_abort():
     try: car_get("/abort")
@@ -273,6 +315,17 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
 <div class="wrap">
 
  <div class="card">
+  <h2>Camera</h2>
+  <img id="live" src="" alt="camera live view">
+  <div class="row" style="margin-top:10px">
+   <button class="primary" onclick="scanNow(1)">Scan QR now</button>
+   <button onclick="scanNow(3)">Scan (3 tries)</button>
+   <span class="muted" id="camnote"></span>
+  </div>
+  <div class="msg"><strong id="scanres">Hold a QR in front of the lens and press Scan.</strong></div>
+ </div>
+
+ <div class="card">
   <h2>Start a delivery</h2>
   <div class="row">
    <label>Bed:
@@ -315,6 +368,18 @@ async function startDelivery(){
     body:JSON.stringify({bed})});
 }
 async function abort(){ await fetch('/api/abort',{method:'POST'}); }
+async function scanNow(tries){
+  const el = document.getElementById('scanres');
+  el.textContent = 'Scanning...';
+  const bed = +document.getElementById('bed').value;
+  try{
+    const r = await (await fetch('/api/scan',{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({attempts:tries, bed})})).json();
+    el.textContent = (r.ok ? '✓ ' : '✗ ') + r.note + '   (' + r.ms + ' ms)';
+    el.style.color = r.ok ? '#0f7a4f' : '#b91c1c';
+  }catch(e){ el.textContent = 'Scan failed - is app.py still running?'; }
+}
 async function manual(action){
   await fetch('/api/manual',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({action})});
@@ -327,6 +392,12 @@ async function poll(){
     document.getElementById('marker').textContent = s.last_marker || '—';
     document.getElementById('msg').textContent    = s.message;
     camIp = s.cam_ip;
+    // Always-on live view. Only set src once, or the stream restarts each poll.
+    const live = document.getElementById('live');
+    if(camIp && !live.getAttribute('src')){
+      live.src = 'http://' + camIp + ':81/stream';
+      document.getElementById('camnote').textContent = camIp;
+    }
     document.getElementById('qrnote').textContent =
        s.qr_available ? '' : 'pyzbar not installed — manual verify only.';
     const man = document.getElementById('manual');

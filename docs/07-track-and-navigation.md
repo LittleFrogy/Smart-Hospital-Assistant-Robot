@@ -30,11 +30,44 @@ The camera faces the direction of travel, so each QR must face **toward the onco
 
 ### 1.1 QR printing
 
-- **At least 40×40mm.** Smaller and the OV2640 cannot resolve it at 15–25cm.
 - **Matte paper, not glossy** — glossy reflects ceiling lights straight into the lens.
-- Short payloads only: `BED1`, `STATION`. No URLs, no JSON — fewer modules, easier decoding.
+- Short payloads only: `BED1`, `STATION`, `TURNAROUND`. Uppercase, no spaces, no URLs, no JSON — fewer modules means an easier decode at distance.
 - Mount at camera height, angled slightly toward the approach.
 - Print `TURNAROUND` at the same size as the rest. It is the code the car relies on most — the only thing that gets it home when something else has gone wrong.
+
+### 1.2 Size depends on what the camera can actually resolve
+
+Decoding needs a minimum number of *pixels per QR module*, so the size you must print scales with the sensor's output resolution. Check which one you have — the camera's own page and `/status` both report it, and the serial banner prints it at boot.
+
+| Camera output | Why | Print size | Working distance |
+|---|---|---|---|
+| 640×480 | OV2640, hardware JPEG | 40mm | 15–25cm |
+| 400×296 | OV2640 with `LOW_POWER_BENCH` on | 50–60mm | 12–20cm |
+| 320×240 | Sensor without a JPEG encoder, software fallback | **70–80mm** | **10–15cm** |
+
+The 640×480 row is what the rest of this document was designed around. The lower rows are derived from it by pixel count and are a **starting point, not a measurement.**
+
+### 1.3 Measure your own numbers before building the track
+
+The distances above set the camera's standoff from the markers, which sets the mounting bracket, which sets the chassis layout. Get them wrong and you find out after the track is taped down.
+
+Measure them directly with the scan tool in the PC app:
+
+1. Start `pc/app.py` and open the control page.
+2. Print `BED1` at the size from the table.
+3. Hold it in front of the lens and press **Scan QR now**.
+4. Back away until it stops decoding reliably.
+
+Record what you find:
+
+| Measured | Value |
+|---|---|
+| Camera output resolution | |
+| QR print size | |
+| Furthest reliable decode | |
+| Decode time at that distance | |
+
+**Reliable means first-attempt.** If a decode only succeeds on the second or third try, or takes several hundred milliseconds of retrying, you are at the edge — the car will fail there once vibration and changing light are involved. Take 70% of the furthest distance you measured as the real working figure.
 
 ---
 
